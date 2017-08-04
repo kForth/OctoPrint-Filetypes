@@ -23,7 +23,7 @@ class FiletypesPlugin(octoprint.plugin.StartupPlugin,
 		]
 
 	def on_after_startup(self):
-		self._logger.info("Filetypes. (settings: stl=%s, gcode=%s, gco=%s, g=%s)" % self._settings.get(["stl"]), self._settings.get(["gcode"]), self._settings.get(["gco"]), self._settings.get(["g"]))
+		self._logger.info("Filetypes. (settings: stl=%s, gcode=%s, gco=%s, g=%s)" % (self._settings.get(["stl"]), self._settings.get(["gcode"]), self._settings.get(["gco"]), self._settings.get(["g"])))
 
 	##~~ SettingsPlugin mixin
 	def get_settings_defaults(self):

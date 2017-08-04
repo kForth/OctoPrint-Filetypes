@@ -16,6 +16,12 @@ class FiletypesPlugin(octoprint.plugin.StartupPlugin,
 					  octoprint.plugin.TemplatePlugin,
 					  octoprint.plugin.SettingsPlugin):
 
+	def get_template_configs(self):
+		return [
+			dict(type="navbar", custom_bindings=False),
+			dict(type="settings", custom_bindings=False)
+		]
+
 	def on_after_startup(self):
 		self._logger.info("Filetypes. (settings: stl=%s, gcode=%s, gco=%s, g=%s)" % self._settings.get(["stl"]), self._settings.get(["gcode"]), self._settings.get(["gco"]), self._settings.get(["g"]))
 

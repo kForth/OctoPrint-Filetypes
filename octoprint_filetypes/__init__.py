@@ -14,12 +14,14 @@ import octoprint.plugin
 
 class FiletypesPlugin(octoprint.plugin.StartupPlugin,
 					  octoprint.plugin.TemplatePlugin,
-					  octoprint.plugin.SettingsPlugin):
+					  octoprint.plugin.SettingsPlugin,
+					  octoprint.plugin.AssetPlugin):
 
 	def get_template_configs(self):
 		return [
 			dict(type="navbar", custom_bindings=False),
-			dict(type="settings", custom_bindings=False)
+			dict(type="settings", custom_bindings=False),
+			dict(type="generic", custom_bindings=False)
 		]
 
 	def on_after_startup(self):
@@ -51,9 +53,7 @@ class FiletypesPlugin(octoprint.plugin.StartupPlugin,
 		# Define your plugin's asset files to automatically include in the
 		# core UI here.
 		return dict(
-			js=["js/filetypes.js"],
-			css=["css/filetypes.css"],
-			less=["less/filetypes.less"]
+			js=["js/filetypes.js"]
 		)
 
 	##~~ Softwareupdate hook

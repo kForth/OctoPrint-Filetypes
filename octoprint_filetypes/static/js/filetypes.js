@@ -5,6 +5,10 @@
  * License: AGPLv3
  */
 $(function() {
+
+    alert("Filetypes.js loaded");
+    $('#gcode_upload').attr('accept', ".stl");
+
     function FiletypesViewModel(parameters) {
         var self = this;
 

@@ -19,9 +19,7 @@ class FiletypesPlugin(octoprint.plugin.StartupPlugin,
 
 	def get_template_configs(self):
 		return [
-			dict(type="navbar", custom_bindings=False),
-			dict(type="settings", custom_bindings=False),
-			dict(type="generic", custom_bindings=False)
+			dict(type="settings")
 		]
 
 	def on_after_startup(self):

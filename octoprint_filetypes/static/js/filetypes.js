@@ -5,20 +5,26 @@
  * License: AGPLv3
  */
 $(function() {
-
-    //$('#gcode_upload').attr('accept', ".stl");
-
     function FiletypesViewModel(parameters) {
         var self = this;
 	self.settings = parameters[0];
 
-	self.stl = ko.observable();
+	self.type = {
+	    stl : ko.observable()
+	};
+
+	self.updateTypes = function(){
+	    console.log("Filetypes updated");
+	};
+
+	self.type.stl.subscribe(self.updateTypes);
 
         self.onBeforeBinding = function() {
             console.log(self.settings.settings.plugins.filetypes)
             self.filetypes = self.settings.settings.plugins.filetypes;
+	    self.type.stl(self.filetypes.stl);
 	    var result = [];
-	    if (self.filetypes.stl()) result.push(".stl");
+	    if (self.type.stl) result.push(".stl");
 	    if (self.filetypes.gcode()) result.push(".gcode");
 	    if (self.filetypes.gco()) result.push(".gco");
             if (self.filetypes.g()) result.push(".g");
@@ -35,6 +41,6 @@ $(function() {
         [ "settingsViewModel"],
 
         // e.g. #settings_plugin_filetypes, #tab_plugin_filetypes, ...
-        [  ]
+        [ "#settings_plugin_filetypes" ]
     ]);
 });

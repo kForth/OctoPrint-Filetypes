@@ -1,6 +1,7 @@
+[English](README.md) | [Русский](README.ru.md)
 # OctoPrint-Filetypes
 
-**TODO:** Describe what your plugin does.
+Let's you select, what kind of files you want to see in upload dialog. 
 
 ## Setup
 
@@ -9,9 +10,7 @@ or manually using this URL:
 
     https://github.com/TheLongRunSmoke/OctoPrint-Filetypes/archive/master.zip
 
-**TODO:** Describe how to install your plugin, if more needs to be done than just installing it via pip or through
-the plugin manager.
-
 ## Configuration
 
-**TODO:** Describe your plugin's configuration options (if any).
+Go to Settings -> Filetypes Plugin and select are extensions that you need.
+![Screen](https://raw.githubusercontent.com/TheLongRunSmoke/OctoPrint-Filetypes/doc/screen.jpg)

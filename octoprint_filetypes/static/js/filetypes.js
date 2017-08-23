@@ -7,16 +7,16 @@
 $(function() {
     function FiletypesViewModel(parameters) {
         var self = this;
-	self.settings = parameters[0];
+	    self.settings = parameters[0];
 
-	self.type = {
+	    self.type = {
 	        stl : ko.observable(),
 	        gcode : ko.observable(),
 	        gco : ko.observable(),
 	        g : ko.observable()
 	    };
 
-	   self.updateTypes = function(){
+	    self.updateTypes = function(){
 	        var keys = Object.keys(self.type);
 	        var result = [];
 	        keys.forEach(function(key){
@@ -27,25 +27,21 @@ $(function() {
 
         self.onBeforeBinding = function() {
             var keys = Object.keys(self.type);
+            // Initialize each element in model
             keys.forEach(function(key) {
                 self.type[key](self.settings.settings.plugins.filetypes[key]());
             });
+            // Bind subscriber to views.
             keys.forEach(function(key) {
                 self.type[key].subscribe(self.updateTypes);
             });
-		self.updateTypes();		
+		    self.updateTypes();
         }
-	
     }
 
-    // view model class, parameters for constructor, container to bind to
     OCTOPRINT_VIEWMODELS.push([
         FiletypesViewModel,
-
-        // e.g. loginStateViewModel, settingsViewModel, ...
         [ "settingsViewModel"],
-
-        // e.g. #settings_plugin_filetypes, #tab_plugin_filetypes, ...
         [ "#settings_plugin_filetypes" ]
     ]);
 });

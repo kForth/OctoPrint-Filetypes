@@ -1,25 +1,58 @@
-<form class="form-horizontal">
-    <h3>Select upload dialog file types</h3>
+<h3>{{ _('Filetypes Plugin') }}</h3>
+
+<form class="form-horizontal" onsubmit="return false;">
+    <p>
+        {{ _("If you have installed plugins that support additional file types, add them here so they can be uploaded thru the 'Upload' and 'Upload to SD' buttons.") }}
+    </p>
     <div class="control-group">
-        <div class="controls">
-            <label class="checkbox">
-                <input type="checkbox" data-bind="checked: type.stl" id="settings-stl"> stl
-            </label>
+        <div class="row-fluid no-bottom-gap">
+            <div class="span4 text-center"><h4 style="margin-bottom: 0;">{{ _('Enabled for Upload') }}</h4></div>
         </div>
-        <div class="controls">
-            <label class="checkbox">
-                <input type="checkbox" data-bind="checked: type.gcode" id="settings-gcode"> gcode
-            </label>
+        <div class="row-fluid">
+            <div class="span2 text-center"><h4>{{ _('Local') }}</h4></div>
+            <div class="span2 text-center"><h4>{{ _('SD') }}</h4></div>
+            <div class="span3"><h4>{{ _('File Extension') }}</h4></div>
         </div>
-        <div class="controls">
-            <label class="checkbox">
-                <input type="checkbox" data-bind="checked: type.gco" id="settings-gco"> gco
-            </label>
+        <div data-bind="foreach: defaultTypes">
+            <div class="row-fluid" style="margin-bottom: 5px">
+                <div class="span2 text-center">
+                    <input type="checkbox" data-bind="checked: $data.local">
+                </div>
+                <div class="span2 text-center">
+                    <input type="checkbox" data-bind="checked: $data.sd">
+                </div>
+                <div class="span3">
+                    <input type="text" class="span12" data-bind="value: $data.extension" disabled>
+                </div>
+                <div class="span1">
+                    <a title="Remove" class="btn btn-danger span12" disabled><i class="far fa-trash-alt"></i></a>
+                </div>
+            </div>
         </div>
-        <div class="controls">
-            <label class="checkbox">
-                <input type="checkbox" data-bind="checked: type.g" id="settings-g"> g
-            </label>
+        <div data-bind="foreach: customTypes">
+            <div class="row-fluid" style="margin-bottom: 5px">
+                <div class="span2 text-center">
+                    <input type="checkbox" data-bind="checked: $data.local">
+                </div>
+                <div class="span2 text-center">
+                    <input type="checkbox" data-bind="checked: $data.sd">
+                </div>
+                <div class="span3">
+                    <input type="text" class="span12" data-bind="value: $data.extension">
+                </div>
+                <div class="span1">
+                    <a title="Remove" class="btn btn-danger span12" data-bind="click: $parent.removeFiletype"><i class="far fa-trash-alt"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="offset7 span1">
+                <a title="Add Type" class="btn btn-primary span12" data-bind="click: addFiletype"><i class="fas fa-plus"></i></a>
+            </div>
         </div>
     </div>
+    <p class="help-block">
+        <strong>Note:</strong>
+        {{ _("The server will still reject uploads for unsupported file types. Only add extensions that are supported by your installed plugins.") }}
+    </p>
 </form>

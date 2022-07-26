@@ -53,18 +53,18 @@ class FiletypesPlugin(octoprint.plugin.StartupPlugin,
 
                 # version check: github repository
                 type="github_release",
-                user="TheLongRunSmoke",
+                user="kforth",
                 repo="OctoPrint-Filetypes",
                 current=self._plugin_version,
 
                 # update method: pip
-                pip="https://github.com/TheLongRunSmoke/OctoPrint-Filetypes/archive/{target_version}.zip"
+                pip="https://github.com/kforth/OctoPrint-Filetypes/archive/{target_version}.zip"
             )
         )
 
 
 __plugin_name__ = "Filetypes Plugin"
-__plugin_version__ = "0.1.1"
+__plugin_version__ = "1.0.0"
 __plugin_description__ = "Select which filetypes can be uploaded to OctoPrint."
 __plugin_pythoncompat__ = ">=2.7,<4"
 __plugin_implementation__ = FiletypesPlugin()
